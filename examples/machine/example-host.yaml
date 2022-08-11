@@ -1,0 +1,14 @@
+apiVersion: machine.boundary.jet.crossplane.io/v1alpha1
+kind: Host
+metadata:
+  name: "saas-project-svc-psql"
+spec:
+  deletionPolicy: Delete
+  forProvider:
+    hostCatalogIdRef:
+      name: saas-project-1
+    address: "opensee-psql-install.psql-svc.cluster.local"
+    name: "opensee-psql-install.psql-svc.cluster.local"
+    type: static
+  providerConfigRef:
+    name: boundary-config

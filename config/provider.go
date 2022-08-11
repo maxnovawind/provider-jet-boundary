@@ -22,9 +22,9 @@ import (
 
 	tjconfig "github.com/crossplane/terrajet/pkg/config"
 	"github.com/hashicorp/terraform-plugin-sdk/v2/helper/schema"
-	"github.com/maxnovawind/provider-jet-boundary/config/host"
-	"github.com/maxnovawind/provider-jet-boundary/config/role"
-	"github.com/maxnovawind/provider-jet-boundary/config/scope"
+	"github.com/maxnovawind/provider-jet-boundary/config/domain"
+	"github.com/maxnovawind/provider-jet-boundary/config/machine"
+	"github.com/maxnovawind/provider-jet-boundary/config/rbac"
 )
 
 const (
@@ -55,9 +55,9 @@ func GetProvider() *tjconfig.Provider {
 
 	for _, configure := range []func(provider *tjconfig.Provider){
 		// add custom config functions
-		scope.Configure,
-		host.Configure,
-		role.Configure,
+		domain.Configure,
+		machine.Configure,
+		rbac.Configure,
 	} {
 		configure(pc)
 	}

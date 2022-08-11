@@ -1,0 +1,15 @@
+apiVersion: machine.boundary.jet.crossplane.io/v1alpha1
+kind: HostSet
+metadata:
+  name: "saas-project-psql"
+spec:
+  deletionPolicy: Delete
+  forProvider:
+    hostCatalogIdRef:
+      name: saas-project-1
+    type: static
+    hostIdsRefs:
+      - name: saas-project-svc-psql
+    name: "psql"
+  providerConfigRef:
+    name: boundary-config

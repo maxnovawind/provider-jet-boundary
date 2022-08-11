@@ -21,26 +21,26 @@ import (
 
 	"github.com/crossplane/terrajet/pkg/controller"
 
-	host "github.com/maxnovawind/provider-jet-boundary/internal/controller/host/host"
-	hostcatalog "github.com/maxnovawind/provider-jet-boundary/internal/controller/host/hostcatalog"
-	hostset "github.com/maxnovawind/provider-jet-boundary/internal/controller/host/hostset"
-	target "github.com/maxnovawind/provider-jet-boundary/internal/controller/host/target"
+	scope "github.com/maxnovawind/provider-jet-boundary/internal/controller/domain/scope"
+	host "github.com/maxnovawind/provider-jet-boundary/internal/controller/machine/host"
+	hostcatalog "github.com/maxnovawind/provider-jet-boundary/internal/controller/machine/hostcatalog"
+	hostset "github.com/maxnovawind/provider-jet-boundary/internal/controller/machine/hostset"
+	target "github.com/maxnovawind/provider-jet-boundary/internal/controller/machine/target"
 	providerconfig "github.com/maxnovawind/provider-jet-boundary/internal/controller/providerconfig"
-	role "github.com/maxnovawind/provider-jet-boundary/internal/controller/role/role"
-	scope "github.com/maxnovawind/provider-jet-boundary/internal/controller/scope/scope"
+	role "github.com/maxnovawind/provider-jet-boundary/internal/controller/rbac/role"
 )
 
 // Setup creates all controllers with the supplied logger and adds them to
 // the supplied manager.
 func Setup(mgr ctrl.Manager, o controller.Options) error {
 	for _, setup := range []func(ctrl.Manager, controller.Options) error{
+		scope.Setup,
 		host.Setup,
 		hostcatalog.Setup,
 		hostset.Setup,
 		target.Setup,
 		providerconfig.Setup,
 		role.Setup,
-		scope.Setup,
 	} {
 		if err := setup(mgr, o); err != nil {
 			return err
