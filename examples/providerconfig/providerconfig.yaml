@@ -1,11 +1,11 @@
-apiVersion: template.jet.crossplane.io/v1alpha1
+apiVersion: boundary.jet.crossplane.io/v1alpha1
 kind: ProviderConfig
 metadata:
-  name: default
+  name: boundary-config
 spec:
   credentials:
     source: Secret
     secretRef:
-      name: example-creds
+      name: boundary-creds
       namespace: crossplane-system
       key: credentials

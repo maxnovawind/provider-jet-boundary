@@ -1,0 +1,26 @@
+apiVersion: role.boundary.jet.crossplane.io/v1alpha1
+kind: Role
+metadata:
+  name: "saas-project-role-user"
+spec:
+  deletionPolicy: Delete
+  forProvider:
+    #ref project scope id
+    grantScopeIdRef:
+      name: saas-project-1
+
+    #ref org scope id
+    scopeId: "o_aUtOrZ3PNS"
+
+    name: "role-saas-project-1-user"
+    grantStrings:
+    - "id=*;type=session;actions=cancel:self"
+    - "id=*;type=session;actions=read:self"
+    - "id=*;type=target;actions=read,list,authorize-session"
+    - "id=*;type=host;actions=read,list"
+    - "id=*;type=host-catalog;actions=read,list"
+    - "id=*;type=host-set;actions=read,list"
+    principalIds:
+    - u_auth
+  providerConfigRef:
+    name: boundary-config

@@ -1,0 +1,17 @@
+apiVersion: host.boundary.jet.crossplane.io/v1alpha1
+kind: Target
+metadata:
+  name: "saas-project-psql"
+spec:
+  deletionPolicy: Delete
+  forProvider:
+    defaultPort: 5432
+    description: "Target psql port"
+    hostSourceIdsRefs:
+    - name: saas-project-psql
+    scopeIdRef:
+      name: saas-project-1
+    name: "target-saas-project-psql"
+    type: tcp
+  providerConfigRef:
+    name: boundary-config

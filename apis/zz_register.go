@@ -22,14 +22,18 @@ package apis
 import (
 	"k8s.io/apimachinery/pkg/runtime"
 
-	v1alpha1 "github.com/crossplane-contrib/provider-jet-template/apis/null/v1alpha1"
-	v1alpha1apis "github.com/crossplane-contrib/provider-jet-template/apis/v1alpha1"
+	v1alpha1 "github.com/maxnovawind/provider-jet-boundary/apis/host/v1alpha1"
+	v1alpha1role "github.com/maxnovawind/provider-jet-boundary/apis/role/v1alpha1"
+	v1alpha1scope "github.com/maxnovawind/provider-jet-boundary/apis/scope/v1alpha1"
+	v1alpha1apis "github.com/maxnovawind/provider-jet-boundary/apis/v1alpha1"
 )
 
 func init() {
 	// Register the types with the Scheme so the components can map objects to GroupVersionKinds and back
 	AddToSchemes = append(AddToSchemes,
 		v1alpha1.SchemeBuilder.AddToScheme,
+		v1alpha1role.SchemeBuilder.AddToScheme,
+		v1alpha1scope.SchemeBuilder.AddToScheme,
 		v1alpha1apis.SchemeBuilder.AddToScheme,
 	)
 }

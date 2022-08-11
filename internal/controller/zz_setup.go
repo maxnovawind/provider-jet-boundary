@@ -21,16 +21,26 @@ import (
 
 	"github.com/crossplane/terrajet/pkg/controller"
 
-	resource "github.com/crossplane-contrib/provider-jet-template/internal/controller/null/resource"
-	providerconfig "github.com/crossplane-contrib/provider-jet-template/internal/controller/providerconfig"
+	host "github.com/maxnovawind/provider-jet-boundary/internal/controller/host/host"
+	hostcatalog "github.com/maxnovawind/provider-jet-boundary/internal/controller/host/hostcatalog"
+	hostset "github.com/maxnovawind/provider-jet-boundary/internal/controller/host/hostset"
+	target "github.com/maxnovawind/provider-jet-boundary/internal/controller/host/target"
+	providerconfig "github.com/maxnovawind/provider-jet-boundary/internal/controller/providerconfig"
+	role "github.com/maxnovawind/provider-jet-boundary/internal/controller/role/role"
+	scope "github.com/maxnovawind/provider-jet-boundary/internal/controller/scope/scope"
 )
 
 // Setup creates all controllers with the supplied logger and adds them to
 // the supplied manager.
 func Setup(mgr ctrl.Manager, o controller.Options) error {
 	for _, setup := range []func(ctrl.Manager, controller.Options) error{
-		resource.Setup,
+		host.Setup,
+		hostcatalog.Setup,
+		hostset.Setup,
+		target.Setup,
 		providerconfig.Setup,
+		role.Setup,
+		scope.Setup,
 	} {
 		if err := setup(mgr, o); err != nil {
 			return err
