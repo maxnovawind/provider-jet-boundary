@@ -41,8 +41,8 @@ const (
 const (
 	keyAddr                        = "addr"
 	keyAuthMethodID                = "auth_method_id"
-	KeyPasswordAuthMethodLoginName = "password_auth_method_login_name"
-	KeyPasswordAuthMethodPassword  = "password_auth_method_password"
+	keyPasswordAuthMethodLoginName = "password_auth_method_login_name"
+	keyPasswordAuthMethodPassword  = "password_auth_method_password"
 	keyTLSInsecureSkipVerify       = "tls_insecure"
 )
 
@@ -96,8 +96,8 @@ func TerraformSetupBuilder(version, providerSource, providerVersion string) terr
 		ps.Configuration = map[string]interface{}{
 			keyAddr:                        keyCreds.Addr,
 			keyAuthMethodID:                keyCreds.AuthMethodID,
-			KeyPasswordAuthMethodLoginName: keyCreds.PasswordAuthMethodLoginName,
-			KeyPasswordAuthMethodPassword:  keyCreds.PasswordAuthMethodPassword,
+			keyPasswordAuthMethodLoginName: keyCreds.PasswordAuthMethodLoginName,
+			keyPasswordAuthMethodPassword:  keyCreds.PasswordAuthMethodPassword,
 			keyTLSInsecureSkipVerify:       keyCreds.TLSInsecureSkipVerify,
 		}
 		return ps, nil
